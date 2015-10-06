@@ -52,6 +52,16 @@ public class Canvas {
 	
 	public static void main(String[] args)
 	{
+		String[] classURLs = {
+			/*L1 0 */ "https://knoxschools.instructure.com/courses/455770",
+			/*L2 1*/ "https://knoxschools.instructure.com/courses/455931",
+			/*L3 2*/ "https://knoxschools.instructure.com/courses/455515",
+			/*L4 3*/ "https://knoxschools.instructure.com/courses/456288",
+			/*N1 4*/ "https://knoxschools.instructure.com/courses/456378",	
+			/*N2 5*/ "https://knoxschools.instructure.com/courses/456050",
+			/*N3 6*/ "https://knoxschools.instructure.com/courses/457831",
+			/*N4 7*/ "https://knoxschools.instructure.com/courses/455931"
+		};
 		
 		String
 			L1 = "https://knoxschools.instructure.com/courses/455770",												//L1 URL
@@ -84,9 +94,9 @@ public class Canvas {
 		}//for x < buttons.length
 		
 		window.add(SELECT);																//Adds the Drop-down menu
-		window.add(TESTURL, BorderLayout.EAST);
+		window.add(TESTURL);															//TestURL is to test a URL
 		window.add(HOME);																//Home button
-		window.add(ASPEN);
+		window.add(ASPEN);																//Aspen button
 		window.add(ASSIGNMENTS);														//Assignments button
 		window.add(DISCUSS);															//Discussions Button
 		window.add(FILES);																//Files button
@@ -114,26 +124,35 @@ public class Canvas {
 		
 		HOME.add(home);
 		home.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String chosenClass = (String) classes.getSelectedItem();
+			public void actionPerformed(ActionEvent e)
+				{
+				int chosenClass = Integer.parseInt((String) (classes.getSelectedItem()));
 				
-				if ("L1: English IV CP" == chosenClass) {
-					try {
-						Desktop.getDesktop().browse(new URL(L1).toURI());
-					} catch (IOException | URISyntaxException e1) {
-						//No. I know how to write a URL.
-					}//Useless try/catch statement	
+				if (1 == chosenClass) {
+					if ((String) (classes.getSelectedItem()) == "L")
+						try {
+							Desktop.getDesktop().browse(new URL(classURLs[0]).toURI());
+						} catch (IOException | URISyntaxException e1) {
+							//No. I know how to write a URL.
+						}//Useless try/catch statement	
+					else if ((String) (classes.getSelectedItem()) == "N") {
+						try {
+							Desktop.getDesktop().browse(new URL(classURLs[4]).toURI());
+						} catch (IOException | URISyntaxException e1) {
+							//No. I know how to write a URL.
+						}//Useless try/catch statement
+					}
 				}//L1
 					
-				else if ("L2: SOSE" == chosenClass) {
+				else if (2 == chosenClass) {
 					try {
-						Desktop.getDesktop().browse(new URL(L2).toURI());
+						Desktop.getDesktop().browse(new URL(classURLs[1]).toURI());
 					} catch (IOException | URISyntaxException e1) {
 						//No. I know how to write a URL.
 					}//Useless try/catch statement
 				}//L2
 				
-				else if( "L3: AP Computer Principles" == chosenClass) {
+				else if(3 == chosenClass) {
 					try {
 						Desktop.getDesktop().browse(new URL(L3).toURI());
 					} catch (IOException | URISyntaxException e1) {
@@ -141,7 +160,7 @@ public class Canvas {
 					}//Useless try/catch statement
 				}//L3
 				
-				else if ("L4: Astronomy" == chosenClass) {
+				else if (4 == chosenClass) {
 					try {
 						Desktop.getDesktop().browse(new URL(L4).toURI());
 					} catch (IOException | URISyntaxException e1) {
@@ -149,7 +168,7 @@ public class Canvas {
 					}//Useless try/catch statement
 				}//L4
 				
-				else if ("N1: Driver's Ed" == chosenClass) {
+				else if (1 == chosenClass) {
 					try {
 						Desktop.getDesktop().browse(new URL(N1).toURI());
 					} catch (IOException | URISyntaxException e1) {
@@ -157,7 +176,7 @@ public class Canvas {
 					}//Useless try/catch statement
 				}//N1
 				
-				else if ("N2: Honors Pre-Cal" == chosenClass) {
+				else if (2 == chosenClass) {
 					try {
 						Desktop.getDesktop().browse(new URL(N2).toURI());
 					} catch (IOException | URISyntaxException e1) {
@@ -165,7 +184,7 @@ public class Canvas {
 					}//Useless try/catch statement
 				}//N2
 				
-				else if ("N3: Personal Finance" == chosenClass) {
+				else if (2 == chosenClass) {
 					try {
 						Desktop.getDesktop().browse(new URL(N3).toURI());
 					} catch (IOException | URISyntaxException e1) {
@@ -173,7 +192,7 @@ public class Canvas {
 					}//Useless try/catch statement
 				}//N3
 				
-				else if ("N4: Design Thinking IV" == chosenClass) {
+				else if (2 == chosenClass) {
 					try {
 						Desktop.getDesktop().browse(new URL(N4).toURI());
 					} catch (IOException | URISyntaxException e1) {
@@ -204,7 +223,8 @@ public class Canvas {
 		
 		ASSIGNMENTS.add(assignments);
 		assignments.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+				{
 				String chosenClass = (String) classes.getSelectedItem();
 				
 				if ("L1: English IV CP" == chosenClass) {
@@ -283,7 +303,8 @@ public class Canvas {
 		
 		DISCUSS.add(discuss);
 		discuss.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+				{
 				String chosenClass = (String) classes.getSelectedItem();
 				
 				if ("L1: English IV CP" == chosenClass) {
@@ -362,7 +383,8 @@ public class Canvas {
 		
 		PEOPLE.add(people);
 		people.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e)
+				{
 				String chosenClass = (String) classes.getSelectedItem();
 				
 				if ("L1: English IV CP" == chosenClass) {
