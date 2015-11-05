@@ -31,31 +31,31 @@ import javax.swing.*;
 
 public class Canvas {
 	public static JFrame
-		window = new JFrame("Canvas"),
-		log = new JFrame("Log");
-	
+		window = new JFrame("Canvas"),											//Main window
+		log = new JFrame("Log");												//Log window
+																				//
 	public static JTextField
-		search = new JTextField(5);
+		search = new JTextField(5);												//Google search field
 	
 	public static JTextArea
-		logs = new JTextArea();
+		logs = new JTextArea();													//log area
 	
 	public static JButton
-		google = new JButton("Search"),
-		home = new JButton("Home"),
-		aspen = new JButton("Aspen"),
-		assignments = new JButton("Assignments"),
-		discuss = new JButton("Discussions"),
-		files = new JButton("Files"),
-		pages = new JButton("Pages"),
-		people = new JButton("People"),
-		quit = new JButton("Quit"),
-		logButton = new JButton("Log");
+		google = new JButton("Search"),											//Google search button
+		home = new JButton("Home"),												//Home button
+		aspen = new JButton("Aspen"),											//Aspen button
+		assignments = new JButton("Assignments"),								//Assignments button
+		discuss = new JButton("Discussions"),									//Discussions button
+		files = new JButton("Files"),											//Files button
+		pages = new JButton("Pages"),											//Pages button
+		people = new JButton("People"),											//People button
+		quit = new JButton("Quit"),												//Quit button
+		logButton = new JButton("Log");											//Log button
 	
 	public static JPanel
-		SELECT = new JPanel(),
-		GOOGLE = new JPanel(),
-		HOME = new JPanel(),
+		SELECT = new JPanel(),													//Classes panel
+		GOOGLE = new JPanel(),													//Google search panel
+		HOME = new JPanel(),													//Home panel
 		ASPEN = new JPanel(),
 		ASSIGNMENTS = new JPanel(),
 		DISCUSS = new JPanel(),
@@ -63,7 +63,7 @@ public class Canvas {
 		PAGES = new JPanel(),
 		PEOPLE = new JPanel(),
 		QUIT = new JPanel(),
-		DEBUG = new JPanel();
+		LOG = new JPanel();
 	
 	public static JComboBox<String>
 		classes = new JComboBox<String>();
@@ -79,7 +79,7 @@ public class Canvas {
 			N2 = "https://knoxschools.instructure.com/courses/456050",												//N2 URL
 			N3 = "https://knoxschools.instructure.com/courses/457831",												//N3 URL
 			N4 = "https://knoxschools.instructure.com/courses/458183",												//N4 URL
-			aspenURL = "https://aspen.knoxschools.org/aspen/logon.do",
+			aspenURL = "https://aspen.knoxschools.org/aspen/home.do",
 			def = "https://google.com",																				//Default URL
 			assignmentExt = "/assignments",																			//Assignments extension to the URL
 			discussExt = "/discussion_topics",																		//Discussion extension to the URL
@@ -87,19 +87,20 @@ public class Canvas {
 			pagesExt = "/pages",																					//Pages extension to the URL
 			peopleExt = "/users";																					//Users extension to the URL
 		
-		String[] buttons = {
-				"L1: English IV CP",
-				"L2: SOSE",
-				"L3: AP Computer Principles",
-				"L4: Astronomy",
-				"N1: Driver's Ed",
-				"N2: Honors Pre-Cal",
-				"N3: Personal Finance",
-				"N4: Scientific Thinking IV"};
+		String[] classURL = {
+			"L1: English IV CP",
+			"L2: SOSE",
+			"L3: AP Computer Principles",
+			"L4: Astronomy",
+			"N1: Driver's Ed",
+			"N2: Honors Pre-Cal",
+			"N3: Personal Finance",
+			"N4: Scientific Thinking IV"
+		};
 		
-		for (int x = 0; x < buttons.length; x++) {
-			classes.addItem(buttons[x]);												//Adds all of the classes into the array
-		}//for x < buttons.length
+		for (int x = 0; x < classURL.length; x++) {
+			classes.addItem(classURL[x]);												//Adds all of the classes into the array
+		}//for x < classURL.length
 		
 		//Sets up the window and adds the color.
 		window.add(SELECT);																//Adds the Drop-down menu
@@ -112,13 +113,37 @@ public class Canvas {
 		window.add(PAGES);																//Pages button
 		window.add(PEOPLE);																//People button
 		window.add(QUIT);																//Quit button
-		window.add(DEBUG);																//Debug log button
+		window.add(LOG);																//Debug log button
 		window.pack();
-		window.setSize(295, 385);
+		window.setSize(295, 395);
 		window.setDefaultCloseOperation(3);
 		window.setVisible(true);
 		window.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 20));
-		window.getContentPane().setBackground(Color.green);
+		window.getContentPane().setBackground(Color.black);
+		window.getContentPane().addMouseListener(new MouseListener() {
+
+			public void mouseClicked(MouseEvent e) {
+				
+			}//mouseClicked
+
+			public void mousePressed(MouseEvent e) {
+				
+			}//mousePressed
+
+			public void mouseReleased(MouseEvent e) {
+				
+			}//mouseReleased
+
+			public void mouseEntered(MouseEvent e) {
+				
+			}//mouseEntering
+
+			public void mouseExited(MouseEvent e) {
+				
+			}//mouseExited
+			
+			
+		});//MouseListener
 		
 		//Sets up the Debug Menu
 		log.add(logs);
@@ -130,37 +155,40 @@ public class Canvas {
 		
 		//Adds the classes drop-down box and adds the background
 		SELECT.add(classes);
-		SELECT.setBackground(Color.green);
-		
+		SELECT.setBackground(Color.black);
 		
 		GOOGLE.add(search);
 		GOOGLE.add(google);
-		GOOGLE.setBackground(Color.green);
-		search.setOpaque(true);
+		GOOGLE.setBackground(Color.black);
 		search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
+				
+				try
+				{
 					Desktop.getDesktop().browse(new URL("https://www.google.com/search?q=" + search.getText()).toURI());
 				} catch (IOException | URISyntaxException e1) {
-					//No. I know how to write a URL.
+					System.out.println("Broken");
 				}//Useless try/catch statement
 				logs.append("Searched \"" + search.getText() + "\"\n");
-			}
+				
+			}//actionPerformed
 		});//Google
 		
 		google.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				try {
 					Desktop.getDesktop().browse(new URL("https://www.google.com/search?q=" + search.getText()).toURI());
 				} catch (IOException | URISyntaxException e1) {
 					//No. I know how to write a URL.
 				}//Useless try/catch statement
 				logs.append("Searched \"" + search.getText() + "\"\n");
-			}
+				
+			}//actionPerformed
 		});//Google
 		
 		HOME.add(home);
-		HOME.setBackground(Color.green);
+		HOME.setBackground(Color.black);
 		home.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 				{
@@ -251,7 +279,7 @@ public class Canvas {
 		});//addActionListener
 		
 		ASPEN.add(aspen);
-		ASPEN.setBackground(Color.green);
+		ASPEN.setBackground(Color.black);
 		aspen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -263,7 +291,7 @@ public class Canvas {
 		});//addActionListener
 		
 		ASSIGNMENTS.add(assignments);
-		ASSIGNMENTS.setBackground(Color.green);
+		ASSIGNMENTS.setBackground(Color.black);
 		assignments.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 				{
@@ -353,7 +381,7 @@ public class Canvas {
 		});//addActionListener
 		
 		DISCUSS.add(discuss);
-		DISCUSS.setBackground(Color.green);
+		DISCUSS.setBackground(Color.black);
 		discuss.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 				{
@@ -443,7 +471,7 @@ public class Canvas {
 		});//addActionListener
 		
 		FILES.add(files);
-		FILES.setBackground(Color.green);
+		FILES.setBackground(Color.black);
 		files.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String chosenClass = (String) classes.getSelectedItem();
@@ -532,7 +560,7 @@ public class Canvas {
 		});//addActionListener
 		
 		PAGES.add(pages);
-		PAGES.setBackground(Color.green);
+		PAGES.setBackground(Color.black);
 		pages.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 				{
@@ -622,7 +650,7 @@ public class Canvas {
 		});//addActionListener
 		
 		PEOPLE.add(people);
-		PEOPLE.setBackground(Color.green);
+		PEOPLE.setBackground(Color.black);
 		people.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
 				{
@@ -712,7 +740,7 @@ public class Canvas {
 		});//addActionListener
 		
 		QUIT.add(quit);
-		QUIT.setBackground(Color.green);
+		QUIT.setBackground(Color.black);
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -720,8 +748,8 @@ public class Canvas {
 			}//actionPerformed
 		});//addActionListener
 		
-		DEBUG.add(logButton);
-		DEBUG.setBackground(Color.green);
+		LOG.add(logButton);
+		LOG.setBackground(Color.black);
 		logButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				log.setVisible(true);
